@@ -1,6 +1,8 @@
 package testes;
 
+import dao.CategoriaDao;
 import dao.ProdutoDao;
+import modelo.Categoria;
 import modelo.Produto;
 import util.JPAUtil;
 
@@ -12,14 +14,19 @@ import java.math.BigDecimal;
 public class CadastroDeProduto {
 
     public static void main(String[] args) {
-        Produto celular = new Produto("Xiaomi Redmi","Celular da china", new BigDecimal("800"));
+        Categoria celulares = new Categoria("CELULARES");
+        Produto celular = new Produto("Xiaomi Redmi",
+                "Celular da china", new BigDecimal("800"),celulares);
 
         JPAUtil jpaUtil = new JPAUtil();
         EntityManager em = jpaUtil.getEntityManager();
 
-        ProdutoDao dao = new ProdutoDao(em);
+        ProdutoDao produtoDao = new ProdutoDao(em);
+        CategoriaDao categoriaDao = new CategoriaDao(em);
+
         em.getTransaction().begin();
-        dao.cadastrar(celular);
+        categoriaDao.cadastrar(celulares);
+        produtoDao.cadastrar(celular);
         em.getTransaction().commit();
         em.close();
 
