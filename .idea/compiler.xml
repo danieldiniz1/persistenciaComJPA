@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="loja-JPA" />
+        <module name="loja" />
       </profile>
     </annotationProcessing>
   </component>
