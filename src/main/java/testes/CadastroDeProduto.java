@@ -1,6 +1,8 @@
 package testes;
 
+import dao.ProdutoDao;
 import modelo.Produto;
+import util.JPAUtil;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -12,11 +14,12 @@ public class CadastroDeProduto {
     public static void main(String[] args) {
         Produto celular = new Produto("Xiaomi Redmi","Celular da china", new BigDecimal("800"));
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("loja");
-        EntityManager em = factory.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(celular);
+        JPAUtil jpaUtil = new JPAUtil();
+        EntityManager em = jpaUtil.getEntityManager();
 
+        ProdutoDao dao = new ProdutoDao(em);
+        em.getTransaction().begin();
+        dao.cadastrar(celular);
         em.getTransaction().commit();
         em.close();
 
