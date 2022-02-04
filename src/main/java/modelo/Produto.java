@@ -14,6 +14,14 @@ public class Produto {
     private String descricao;
     private BigDecimal preco;
 
+    public Produto() {
+    }
+    public Produto(String nome, String descricao, BigDecimal preco) {
+        setNome(nome);
+        setDescricao(descricao);
+        setPreco(preco);
+    }
+
     public Long getId() {
         return id;
     }
@@ -26,7 +34,7 @@ public class Produto {
         return nome;
     }
 
-    public void setNome(String nome) {
+    private void setNome(String nome) {
         this.nome = nome;
     }
 
@@ -34,7 +42,7 @@ public class Produto {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
+    private void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
@@ -42,7 +50,7 @@ public class Produto {
         return preco;
     }
 
-    public void setPreco(BigDecimal preco) {
+    private void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 }
