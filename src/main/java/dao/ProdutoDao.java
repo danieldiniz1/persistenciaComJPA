@@ -3,6 +3,7 @@ package dao;
 import modelo.Produto;
 
 import javax.persistence.EntityManager;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class ProdutoDao {
@@ -49,5 +50,13 @@ public class ProdutoDao {
         return em.createQuery(jpql,Produto.class)
                 .setParameter("categoria", categoria)
                 .getResultList();
+    }
+
+    public BigDecimal buscarPrecoDoProdutoPorNome(String nome){
+        String jpql = "SELECT p.preco FROM Produto p WHERE p.nome = :nome";
+
+        return em.createQuery(jpql,BigDecimal.class)
+                .setParameter("nome", nome)
+                .getSingleResult();
     }
 }

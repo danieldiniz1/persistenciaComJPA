@@ -34,6 +34,8 @@ public class CadastroDeProduto {
         produtoFiltradoCategoria.forEach(p -> System.out.println("O produto: " +p.getNome() + ", preço: R$ " + p.getPreco()
                 + "da categoria: " + p.getCategoria().getNome()));
 
+        BigDecimal preco = produtoDao.buscarPrecoDoProdutoPorNome("Xiaomi Redmi");
+        System.out.println("Preço do produto: " + preco);
     }
 
     private static void cadastrarProduto() {
