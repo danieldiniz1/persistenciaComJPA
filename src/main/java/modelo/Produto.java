@@ -19,6 +19,9 @@ public class Produto {
     @ManyToOne
     private Categoria categoria;
 
+    public Produto() {
+    }
+
     public Produto(String nome, String descricao, BigDecimal preco) {
         setNome(nome);
         setDescricao(descricao);
@@ -47,10 +50,6 @@ public class Produto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-
-    public Produto() {
-    }
-
 
     public Long getId() {
         return id;
