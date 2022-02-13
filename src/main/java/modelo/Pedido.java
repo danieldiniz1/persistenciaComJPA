@@ -16,7 +16,7 @@ public class Pedido {
     @Column(name = "valor_total")
     private BigDecimal valorTotal = BigDecimal.ZERO;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Cliente cliente;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
@@ -47,6 +47,10 @@ public class Pedido {
 
     public Cliente getCliente() {
         return cliente;
+    }
+
+    public List<ItemPedido> getItens() {
+        return itens;
     }
 
     public void adicionarItem(ItemPedido item) {

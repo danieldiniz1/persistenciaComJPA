@@ -43,4 +43,10 @@ public class PedidoDao {
                 .getResultList();
     }
 
+    public Pedido buscarPedidoComCliente(Integer id){
+        return em.createQuery("SELECT p FROM Pedido p JOIN FETCH p.cliente WHERE p.id = :id",Pedido.class)
+                .setParameter("id",id)
+                .getSingleResult();
+    }
+
 }
