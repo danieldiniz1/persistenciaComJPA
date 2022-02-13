@@ -25,11 +25,11 @@ public class CadastroDePedido {
         Cliente pedro = clienteDao.buscarPorId(2);
 
         Pedido pedido = new Pedido(jose);
-        pedido.adicionarItem(new ItemPedido(10,pedido,produto));
-        pedido.adicionarItem(new ItemPedido(10,pedido,produtoDao.buscarPorId(3L)));
+        pedido.adicionarItem(new ItemPedido(10, pedido, produto));
+        pedido.adicionarItem(new ItemPedido(10, pedido, produtoDao.buscarPorId(3L)));
 
         Pedido pedido2 = new Pedido(pedro);
-        pedido2.adicionarItem(new ItemPedido(2,pedido2,produtoDao.buscarPorId(3L)));
+        pedido2.adicionarItem(new ItemPedido(2, pedido2, produtoDao.buscarPorId(3L)));
 
         em.getTransaction().begin();
 
@@ -52,18 +52,16 @@ public class CadastroDePedido {
     }
 
     private static void popularBancoDeDados() {
-        Cliente jose = new Cliente("jose","12345678998");
-        Cliente pedro = new Cliente("pedro","32165498798");
+        Cliente jose = new Cliente("jose", "12345678998");
+        Cliente pedro = new Cliente("pedro", "32165498798");
         Categoria celulares = new Categoria("CELULARES");
         Categoria videoGames = new Categoria("VIDEOGAMEs");
         Categoria computadores = new Categoria("VIDEOGAMEs");
 
-        Produto celular = new Produto("Xiaomi Redmi",
-                "Celular da china", new BigDecimal("800"),celulares);
-        Produto celular2 = new Produto("Sansung S10",
-                "Celular da Coreia", new BigDecimal("1200"), celulares);
-        Produto videoGame = new Produto("PS5","otimo videogame",new BigDecimal("2000.98"));
-        Produto computador = new Produto("Macbook","MacbookPro",new BigDecimal("10050.78"));
+        Produto celular = new Produto("Xiaomi Redmi", "Celular da china", new BigDecimal("800"), celulares);
+        Produto celular2 = new Produto("Sansung S10", "Celular da Coreia", new BigDecimal("1200"), celulares);
+        Produto videoGame = new Produto("PS5", "otimo videogame", new BigDecimal("2000.98"));
+        Produto computador = new Produto("Macbook", "MacbookPro", new BigDecimal("10050.78"));
 
         JPAUtil jpaUtil = new JPAUtil();
         EntityManager em = jpaUtil.getEntityManager();
