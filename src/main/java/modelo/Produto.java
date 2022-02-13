@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "produtos")
+@NamedQuery(name="Produto.produtosPorCategoria", query = "SELECT p FROM Produto p WHERE p.categoria.nome = :categoria")
 public class Produto {
 
     @Id
@@ -81,5 +82,17 @@ public class Produto {
 
     private void setPreco(BigDecimal preco) {
         this.preco = preco;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", descricao='" + descricao + '\'' +
+                ", preco=" + preco +
+                ", dataCadastro=" + dataCadastro +
+                ", categoria=" + categoria +
+                '}';
     }
 }
