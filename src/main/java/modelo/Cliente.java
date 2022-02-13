@@ -9,15 +9,19 @@ public class Cliente {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String nome;
-    private String cpf;
+
+    @Embedded
+    private DadosPessoais dadosPessoais;
 
     public Cliente() {
     }
 
     public Cliente(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
+        this.dadosPessoais = new DadosPessoais(nome,cpf); // injeção de dependencia com inversão de controle DI/IOC
+    }
+
+    public String getNome(){  // Método Delegate, delegando a classe DadosPessoais o retorno do nome.
+        return this.dadosPessoais.getNome();
     }
 
     public int getId() {
@@ -28,19 +32,7 @@ public class Cliente {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public DadosPessoais getDadosPessoais() {
+        return dadosPessoais;
     }
 }

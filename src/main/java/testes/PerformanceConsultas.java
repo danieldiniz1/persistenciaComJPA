@@ -21,7 +21,7 @@ public class PerformanceConsultas {
         Pedido pedido = pedidoDao.buscarPedidoComCliente(1);
         em.close();
 
-        System.out.println(pedido.getData());
+        System.out.println(pedido.getCliente().getDadosPessoais().getCpf());
     }
 
     private static EntityManager entityManager(){
